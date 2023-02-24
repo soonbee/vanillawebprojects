@@ -9,7 +9,26 @@
 <body>
   <script src="scripts.js"></script>
   <div class="card">
-    <h2 class="title">Register With Us</h2>
+    <form class="form">
+      <h2 class="form-title">Register With Us</h2>
+      <div class="form-row-container">
+        <label for="username" class="form-name">Username</label>
+        <input type="text" name="username" class="form-input" placeholder="Enter username" />
+      </div>
+      <div class="form-row-container">
+        <label for="email" class="form-name">Email</label>
+        <input type="text" name="email" class="form-input" placeholder="Enter email" />
+      </div>
+      <div class="form-row-container">
+        <label for="password" class="form-name">Password</label>
+        <input type="password" name="password" class="form-input" placeholder="Enter password" />
+      </div>
+      <div class="form-row-container">
+        <label for="confirm" class="form-name">Confirm Password</label>
+        <input type="password" name="confirm" class="form-input" placeholder="Enter password again" />
+      </div>
+      <button type="submit" class="form-button">Submit</button>
+    </form>
   </div>
 </body>
 </html>
