@@ -1,0 +1,1 @@
+This is the repository for the projects in [Web Projects With Vanilla JavaScript](https://github.com/bradtraversy/vanillawebprojects).
