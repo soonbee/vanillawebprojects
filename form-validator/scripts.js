@@ -61,12 +61,26 @@ function checkLength(target, min, max) {
   return true;
 }
 
+/**
+ * 
+ * @param {HTMLElement} target 
+ * @returns {boolean} 
+ */
+function checkEmail(target) {
+  const re = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  let result = re.test(target.value);
+  if (!result) {
+    activateError(target, 'Email is not valid.');
+  }
+  return result;
+}
+
 form.addEventListener('submit', function(e) {
   e.preventDefault();
 
   let valid = true;
   valid = checkLength(username, 3, 15) || valid;
-  valid = checkRequired(email) || valid;
+  valid = checkRequired(email) && checkEmail(email) || valid;
   valid = checkLength(password, 6, 25) || valid;
   valid = checkRequired(confirmPassword) || valid;
   if (valid) {
