@@ -13,6 +13,13 @@ function capitalize(value) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
+function activateError(target, message) {
+  let parentEl = target.parentElement;
+  parentEl.classList.add('error');
+  let messageEl = parentEl.getElementsByClassName('error-message')[0];
+  messageEl.textContent = message;
+}
+
 /**
  * 
  * @param {HTMLElement} target 
@@ -20,12 +27,9 @@ function capitalize(value) {
  */
 function checkRequired(target) {
   if (!target.value) {
-    let parent = target.parentElement;
-    parent.classList.add('error');
-
     let name = target.getAttribute('name');
-    let message = parent.getElementsByClassName('error-message')[0];
-    message.textContent = `${capitalize(name)} is required.`;
+    let message = `${capitalize(name)} is required.`;
+    activateError(target, message)
     return false;
   }
   return true;
@@ -40,22 +44,21 @@ function checkRequired(target) {
  */
 function checkLength(target, min, max) {
   let name = target.getAttribute('name');
-  let nextMessage;
   if (min && target.value.length < min) {
-    nextMessage = `${capitalize(name)} must be at least ${min} characters.`;
+    activateError(
+      target,
+      `${capitalize(name)} must be at least ${min} characters.`,
+    );
+    return false;
   } 
   if (max && target.value.length > max) {
-    nextMessage = `${capitalize(name)} must be less than ${max} characters.`;
-  }
-  if (nextMessage) {
-    let parent = target.parentElement;
-    parent.classList.add('error');
-    let message = parent.getElementsByClassName('error-message')[0];
-    message.textContent = nextMessage;
+    activateError(
+      target,
+      `${capitalize(name)} must be less than ${max} characters.`,
+    );
     return false;
-  } else {
-    return true;
   }
+  return true;
 }
 
 form.addEventListener('submit', function(e) {
