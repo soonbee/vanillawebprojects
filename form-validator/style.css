@@ -2,7 +2,8 @@ html {
     font-family: 'Open Sans', sans-serif;
 }
 body {
-    height: 100vh;
+    min-height: 100vh;
+    margin: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,4 +47,13 @@ body {
     padding: 12px;
     border-radius: 4px;
     cursor: pointer;
+}
+.form-row-container.error > input {
+    outline-color: crimson;
+    border: 2px solid crimson;
+}
+.error-message {
+    color: crimson;
+    font-size: 14px;
+    height: 0px;
 }
