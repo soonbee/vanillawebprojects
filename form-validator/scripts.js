@@ -2,7 +2,7 @@ let form = document.getElementsByTagName('form')[0];
 let username = document.getElementsByName('username')[0];
 let email = document.getElementsByName('email')[0];
 let password = document.getElementsByName('password')[0];
-let confirmPassword = document.getElementsByName('confirm')[0];
+let passwordConfirm = document.getElementsByName('confirm')[0];
 
 /**
  * 
@@ -13,6 +13,11 @@ function capitalize(value) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
+/**
+ * 
+ * @param {HTMLElement} target 
+ * @param {string} message 
+ */
 function activateError(target, message) {
   let parentEl = target.parentElement;
   parentEl.classList.add('error');
@@ -81,12 +86,26 @@ form.addEventListener('submit', function(e) {
   let valid = true;
   valid = checkLength(username, 3, 15) || valid;
   valid = checkRequired(email) && checkEmail(email) || valid;
-  valid = checkLength(password, 6, 25) || valid;
-  valid = checkRequired(confirmPassword) || valid;
+  valid = checkRequired(password) && checkLength(password, 6, 25) || valid;
+  valid = checkPasswordConfirm(password, passwordConfirm) || valid;
   if (valid) {
     // TODO: register user
   }
 });
+
+/**
+ * 
+ * @param {HTMLElement} password
+ * @param {HTMLElement} passwordConfirm
+ * @returns 
+ */
+function checkPasswordConfirm(password, passwordConfirm) {
+  let result = password.value === passwordConfirm.value;
+  if (!result) {
+    activateError(target, `Password do not match.`);
+  }
+  return result;
+}
 
 function resetError() {
   let parent = this.parentElement;
@@ -98,5 +117,5 @@ function resetError() {
 username.addEventListener('input', resetError);
 email.addEventListener('input', resetError);
 password.addEventListener('input', resetError);
-confirmPassword.addEventListener('input', resetError);
+passwordConfirm.addEventListener('input', resetError);
 
