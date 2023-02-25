@@ -31,13 +31,40 @@ function checkRequired(target) {
   return true;
 }
 
+/**
+ * 
+ * @param {HTMLElement} target 
+ * @param {number} min 
+ * @param {number} max 
+ * @returns {boolean}
+ */
+function checkLength(target, min, max) {
+  let name = target.getAttribute('name');
+  let nextMessage;
+  if (min && target.value.length < min) {
+    nextMessage = `${capitalize(name)} must be at least ${min} characters.`;
+  } 
+  if (max && target.value.length > max) {
+    nextMessage = `${capitalize(name)} must be less than ${max} characters.`;
+  }
+  if (nextMessage) {
+    let parent = target.parentElement;
+    parent.classList.add('error');
+    let message = parent.getElementsByClassName('error-message')[0];
+    message.textContent = nextMessage;
+    return false;
+  } else {
+    return true;
+  }
+}
+
 form.addEventListener('submit', function(e) {
   e.preventDefault();
 
   let valid = true;
-  valid = checkRequired(username) || valid;
+  valid = checkLength(username, 3, 15) || valid;
   valid = checkRequired(email) || valid;
-  valid = checkRequired(password) || valid;
+  valid = checkLength(password, 6, 25) || valid;
   valid = checkRequired(confirmPassword) || valid;
   if (valid) {
     // TODO: register user
