@@ -34,11 +34,11 @@ function checkRequired(target) {
 form.addEventListener('submit', function(e) {
   e.preventDefault();
 
-  const valid = checkRequired(username)
-  && checkRequired(email)
-  && checkRequired(password)
-  && checkRequired(confirmPassword);
-
+  let valid = true;
+  valid = checkRequired(username) || valid;
+  valid = checkRequired(email) || valid;
+  valid = checkRequired(password) || valid;
+  valid = checkRequired(confirmPassword) || valid;
   if (valid) {
     // TODO: register user
   }
