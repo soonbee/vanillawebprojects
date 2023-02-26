@@ -23,7 +23,7 @@ body {
 .form-row-container {
     display: flex;
     flex-direction: column;
-    margin-bottom: 35px;
+    margin-bottom: 34px;
 }
 .form-name {
     color: gray;
@@ -32,8 +32,9 @@ body {
 .form-input {
     font-size: 14px;
     padding: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(0, 0, 0, 0.15);
     border-radius: 4px;
+    margin-bottom: 2px;
 }
 .form-input:focus {
     outline-color: gray;
@@ -47,6 +48,10 @@ body {
     padding: 12px;
     border-radius: 4px;
     cursor: pointer;
+}
+.form-row-container.success > input {
+    outline-color: green;
+    border: 2px solid green;
 }
 .form-row-container.error > input {
     outline-color: crimson;

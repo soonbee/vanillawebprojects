@@ -28,6 +28,15 @@ function activateError(target, message) {
 /**
  * 
  * @param {HTMLElement} target 
+ */
+function activateSuccess(target) {
+  let parentEl = target.parentElement;
+  parentEl.classList.add('success');
+}
+
+/**
+ * 
+ * @param {HTMLElement} target 
  * @returns {boolean}
  */
 function checkRequired(target) {
@@ -37,6 +46,7 @@ function checkRequired(target) {
     activateError(target, message)
     return false;
   }
+  activateSuccess(target);
   return true;
 }
 
@@ -63,6 +73,7 @@ function checkLength(target, min, max) {
     );
     return false;
   }
+  activateSuccess(target);
   return true;
 }
 
@@ -77,6 +88,7 @@ function checkEmail(target) {
   if (!result) {
     activateError(target, 'Email is not valid.');
   }
+  activateSuccess(target);
   return result;
 }
 
@@ -87,7 +99,9 @@ form.addEventListener('submit', function(e) {
   valid = checkLength(username, 3, 15) || valid;
   valid = checkRequired(email) && checkEmail(email) || valid;
   valid = checkRequired(password) && checkLength(password, 6, 25) || valid;
-  valid = checkPasswordConfirm(password, passwordConfirm) || valid;
+  valid = checkRequired(passwordConfirm)
+    && checkPasswordConfirm(password, passwordConfirm)
+    || valid;
   if (valid) {
     // TODO: register user
   }
@@ -104,18 +118,20 @@ function checkPasswordConfirm(password, passwordConfirm) {
   if (!result) {
     activateError(target, `Password do not match.`);
   }
+  activateSuccess(passwordConfirm);
   return result;
 }
 
-function resetError() {
+function reset() {
   let parent = this.parentElement;
   parent.classList.remove('error');
+  parent.classList.remove('success');
   let message = parent.getElementsByClassName('error-message')[0];
   message.textContent = '';
 }
 
-username.addEventListener('input', resetError);
-email.addEventListener('input', resetError);
-password.addEventListener('input', resetError);
-passwordConfirm.addEventListener('input', resetError);
+username.addEventListener('input', reset);
+email.addEventListener('input', reset);
+password.addEventListener('input', reset);
+passwordConfirm.addEventListener('input', reset);
 
