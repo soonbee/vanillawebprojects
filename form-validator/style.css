@@ -1,0 +1,64 @@
+html {
+    font-family: 'Open Sans', sans-serif;
+}
+body {
+    min-height: 100vh;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card {
+    width: 400px;
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 4px;
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
+}
+.form {
+    padding: 10px 40px 30px 40px;
+}
+.form-title {
+    text-align: center;
+}
+.form-row-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 34px;
+}
+.form-name {
+    color: gray;
+    margin-bottom: 4px;
+}
+.form-input {
+    font-size: 14px;
+    padding: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+.form-input:focus {
+    outline-color: gray;
+}
+.form-button {
+    width: 100%;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.form-row-container.success > input {
+    outline-color: green;
+    border: 2px solid green;
+}
+.form-row-container.error > input {
+    outline-color: crimson;
+    border: 2px solid crimson;
+}
+.error-message {
+    color: crimson;
+    font-size: 14px;
+    height: 0px;
+}
