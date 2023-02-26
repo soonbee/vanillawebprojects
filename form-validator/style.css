@@ -1,3 +1,7 @@
+:root {
+    --success-color: green;
+    --error-color: crimson;
+}
 html {
     font-family: 'Open Sans', sans-serif;
 }
@@ -50,15 +54,15 @@ body {
     cursor: pointer;
 }
 .form-row-container.success > input {
-    outline-color: green;
-    border: 2px solid green;
+    outline-color: var(--success-color);
+    border: 2px solid var(--success-color);
 }
 .form-row-container.error > input {
-    outline-color: crimson;
-    border: 2px solid crimson;
+    outline-color: var(--error-color);
+    border: 2px solid var(--error-color);
 }
 .error-message {
-    color: crimson;
+    color: var(--error-color);
     font-size: 14px;
     height: 0px;
 }
