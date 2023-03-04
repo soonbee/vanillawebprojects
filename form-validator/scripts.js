@@ -27,7 +27,7 @@ function activateError(target, message) {
 
 /**
  * 
- * @param {HTMLElement} target 
+ * @param {HTMLElement} target
  */
 function activateSuccess(target) {
   let parentEl = target.parentElement;
@@ -98,7 +98,7 @@ form.addEventListener('submit', function(e) {
   let valid = true;
   valid = checkLength(username, 3, 15) || valid;
   valid = checkRequired(email) && checkEmail(email) || valid;
-  valid = checkRequired(password) && checkLength(password, 6, 25) || valid;
+  valid = checkLength(password, 6, 25) || valid;
   valid = checkRequired(passwordConfirm)
     && checkPasswordConfirm(password, passwordConfirm)
     || valid;
