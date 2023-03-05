@@ -12,23 +12,31 @@ async function updateRate() {
   let url = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${base}/${target}.min.json`
   let response = await fetch(url);
   let json = await response.json();
-  rate = json[target];
+  rate = Number(json[target]);
   rateDisplay.textContent = `1 ${base.toUpperCase()} = ${rate} ${target.toUpperCase()}`;
-  targetInput.value = (Number(baseInput.value) * Number(rate)).toFixed(2);
+}
+function calculate() {
+  targetInput.value = (baseInput.value * rate).toFixed(2);
 }
 
-window.addEventListener("load", function() {
+window.addEventListener("load", async function() {
   baseInput.value = "1"
   baseSelect.value = "usd";
   targetSelect.value = "eur";
-  updateRate();
+  await updateRate();
+  calculate();
 })
 
-baseSelect.addEventListener("change", updateRate);
-targetSelect.addEventListener("change", updateRate);
-
+baseSelect.addEventListener("change", async function() {
+  await updateRate();
+  calculate();
+});
+targetSelect.addEventListener("change", async function() {
+  await updateRate();
+  calculate();
+});
 baseInput.addEventListener("input", function() {
-  targetInput.value = (Number(baseInput.value) * Number(rate)).toFixed(2);
+  calculate();
 });
 
 swapButton.addEventListener("click", function() {
