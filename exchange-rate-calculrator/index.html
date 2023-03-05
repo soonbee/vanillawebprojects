@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" href="style.css">
+  <title>Exchange Rate Calculator</title>
+</head>
+<body>
+  <div id="title">
+    <img id="money-image" src="money.png">
+    <h1>Exchange Rate Calculator</h1>
+  </div>
+  <p id="description">Choose the currency and the amounts to get the exchange rate</p>
+  <div id="display">
+    <div id="currency-base" class="currency-select">
+      <select>
+        <option value="krw">KRW</option>
+        <option value="usd">USD</option>
+        <option value="eur">EUR</option>
+        <option value="jpy">JPY</option>
+        <option value="cny">CNY</option>
+      </select>
+      <input type="number" value=""></input>
+    </div>
+    <div id="rate">
+      <button type="button">Swap</button>
+      <span></span>
+    </div>
+    <div id="currency-target" class="currency-select">
+      <select>
+        <option value="krw">KRW</option>
+        <option value="usd">USD</option>
+        <option value="eur">EUR</option>
+        <option value="jpy">JPY</option>
+        <option value="cny">CNY</option>
+      </select>
+      <input type="number" value="" disabled></input>
+    </div>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+</html>
