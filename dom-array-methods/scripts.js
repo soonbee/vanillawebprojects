@@ -1,5 +1,6 @@
 userAddButton = document.getElementById("add");
 moneyDoubleButton = document.getElementById("double");
+millionFilterButton = document.getElementById("filter");
 content = document.getElementById("content");
 let rows = [];
 
@@ -41,5 +42,10 @@ userAddButton.addEventListener("click", async function() {
 
 moneyDoubleButton.addEventListener("click", function() {
   rows = rows.map(({name, value}) => ({name, value: value * 2}));
+  renderRows();
+});
+
+millionFilterButton.addEventListener("click", function() {
+  rows = rows.filter(row => row.value > 1000000);
   renderRows();
 });
