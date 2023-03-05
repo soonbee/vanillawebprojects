@@ -1,4 +1,5 @@
 userAddButton = document.getElementById("add");
+moneyDoubleButton = document.getElementById("double");
 content = document.getElementById("content");
 let rows = [];
 
@@ -33,8 +34,12 @@ window.addEventListener("load", async function() {
   renderRows();
 })
 
-
 userAddButton.addEventListener("click", async function() {
   rows.push(await generateUser());
+  renderRows();
+});
+
+moneyDoubleButton.addEventListener("click", function() {
+  rows = rows.map(({name, value}) => ({name, value: value * 2}));
   renderRows();
 });
