@@ -5,6 +5,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #f4f4f4;
 }
 #container {
     display: flex;
@@ -45,4 +46,15 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+}
+.total-wealth {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    border-width: 0px 0px 1px 0px;
+    border-color: black;
+    border-style: solid;
+    font-size: 20px;
+    padding: 8px;
+    margin-top: 12px;
 }

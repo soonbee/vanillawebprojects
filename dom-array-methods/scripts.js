@@ -2,6 +2,7 @@ userAddButton = document.getElementById("add");
 moneyDoubleButton = document.getElementById("double");
 millionFilterButton = document.getElementById("filter");
 sortButton = document.getElementById("sort");
+totalCalculationButton = document.getElementById("calculation");
 content = document.getElementById("content");
 let rows = [];
 
@@ -24,6 +25,10 @@ function numberWithCommas(x) {
 }
 
 function renderRows() {
+  const elements = document.getElementsByClassName("total-wealth");
+  for (let el of elements) {
+    el.remove();
+  }
   content.innerHTML = rows
     .map(row => `<div class="user"><strong>${row.name}</strong><span>$${numberWithCommas(row.value)}</span></div>`)
     .join("");
@@ -56,4 +61,14 @@ sortButton.addEventListener("click", function() {
     return b.value - a.value;
   });
   renderRows();
+});
+
+totalCalculationButton.addEventListener("click", function() {
+  let sum = rows.reduce((acc, cur) => {
+    return acc + cur.value;
+  }, 0)
+  let totalWealth = document.createElement("div");
+  totalWealth.className = "total-wealth"
+  totalWealth.innerHTML = `<span>Total Wealth:</span><strong>$${numberWithCommas(sum)}</strong>`;
+  content.appendChild(totalWealth);
 });
