@@ -30,7 +30,7 @@ body {
     flex: 1;
     padding: 10px 20px;
 }
-#header {
+#content-header {
     display: flex;
     justify-content: space-between;
     margin-top: 8px;
