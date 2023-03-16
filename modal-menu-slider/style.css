@@ -1,15 +1,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+:root {
+    --primary-color: #30336b;
+    --secondary-color: #be2edd;
+    --sidebar-width: 200px;
+}
 html {
     font-family: Lato, sans-serif;
 }
 body {
     margin: 0;
+    display: flex;
+}
+aside {
+    width: var(--sidebar-width);
+    background-color: var(--primary-color);
+    position: absolute;
+    top: 0;
+    left: -200px;
+    height: 100%;
+    transition: transform 0.2s linear;
+    border-style: solid;
+    border-color: #ffffff10;
+    border-width: 0 2px 0 0;
+    z-index: 1;
+}
+#profile {
+    width: 100%;
+    aspect-ratio: 10/7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-color: #ffffff10;
+    border-width: 0 0 2px 0;
+}
+#profile > img {
+    width: 70px;
+    height: 70px;
+    background-color: black;
+    border-radius: 50%;
+    border: none;
+}
+nav {
+    border-style: solid;
+    border-color: #ffffff10;
+    border-width: 0 0 2px 0;
+    padding: 20px;
+}
+nav > a {
+    color: white;
+    text-decoration: none;
+}
+nav > a:hover {
+    text-decoration: underline;
+}
+main {
+    width: 100%;
+    max-height: 100vh;
+    overflow-y: scroll;
+    transition: margin 0.2s linear;
+}
+#content {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+#content > div {
+    max-width: 800px;
 }
 header {
     color: white;
-    background-color: #30336b;
+    background-color: var(--primary-color);
     text-align: center;
     padding: 42px 21px;
+    position: relative;
 }
 header h1 {
     font-size: 42px;
@@ -22,7 +86,7 @@ header h3 {
 button {
     cursor: pointer;
     color: inherit;
-    background-color: #be2edd;
+    background-color: var(--secondary-color);
     border: none;
     border-radius: 4px;
     padding: 0.6em 1.5em;
@@ -55,7 +119,4 @@ button.base {
     height: 18%;
     background-color: white;
     border-radius: 1px;
-}
-main {
-    padding: 16px;
 }
