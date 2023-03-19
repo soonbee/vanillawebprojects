@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+:root {
+    --primary-color: #30336b;
+    --secondary-color: #be2edd;
+    --sidebar-width: 200px;
+}
+input {
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 16px;
+}
+html {
+    font-family: Lato, sans-serif;
+}
+body {
+    margin: 0;
+    display: flex;
+}
+aside {
+    width: var(--sidebar-width);
+    background-color: var(--primary-color);
+    position: absolute;
+    top: 0;
+    left: -200px;
+    height: 100%;
+    transition: transform 0.2s linear;
+    border-style: solid;
+    border-color: #ffffff10;
+    border-width: 0 2px 0 0;
+    z-index: 1;
+}
+#profile {
+    width: 100%;
+    aspect-ratio: 10/7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-color: #ffffff10;
+    border-width: 0 0 2px 0;
+}
+#profile > img {
+    width: 70px;
+    height: 70px;
+    background-color: black;
+    border-radius: 50%;
+    border: none;
+}
+nav {
+    border-style: solid;
+    border-color: #ffffff10;
+    border-width: 0 0 2px 0;
+    padding: 20px;
+}
+nav > a {
+    color: white;
+    text-decoration: none;
+}
+nav > a:hover {
+    text-decoration: underline;
+}
+main {
+    width: 100%;
+    max-height: 100vh;
+    overflow-y: scroll;
+    transition: margin 0.2s linear;
+}
+#content {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+#content > div {
+    max-width: 800px;
+}
+header {
+    color: white;
+    background-color: var(--primary-color);
+    text-align: center;
+    padding: 42px 21px;
+    position: relative;
+}
+header h1 {
+    font-size: 42px;
+    margin: 0;
+}
+header h3 {
+    font-size: 21px;
+    margin: 32px 0px;
+}
+button {
+    cursor: pointer;
+    color: inherit;
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 4px;
+    padding: 0.6em 1.5em;
+    width: fit-content;
+    color: white;
+}
+#sign-up {
+    font-size: 20px;
+}
+button.base {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0px;
+}
+#menu {
+    position: absolute;
+    width: 48px;
+    height: 42px;
+    background-color: #00000050;
+    top: 20px;
+    left: 20px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 12px;
+}
+#menu > div {
+    width: 100%;
+    height: 18%;
+    background-color: white;
+    border-radius: 1px;
+}
+.modal {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000090;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+.modal[show] {
+    visibility: visible;
+}
+.modal[show] > .modal-container {
+    opacity: 1;
+}
+.modal-container {
+    opacity: 0;
+    background-color: white;
+    border-radius: 4px;
+    width: 400px;
+    transition: opacity 1s linear;
+}
+.modal-header {
+    border-radius: 4px 4px 0px 0px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+.modal-header-title {
+    font-size: 20px;
+}
+.modal-main {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+}
