@@ -3,6 +3,7 @@ let musicPlayer = document.querySelector("#music-player");
 let musicSource = document.querySelector("#music-source");
 let musicTitle = document.querySelector("#music-title");
 let musicCover = document.querySelector("#music-cover");
+let progress = document.querySelector("#progress");
 
 let currentIndex = 0;
 let sourceList = [
@@ -33,8 +34,20 @@ musicSource.onpause = function() {
     playButton.innerHTML = `<i class="fas fa-play fa-2x" style="color: #cdc2d0;"></i>`;
     musicPlayer.removeAttribute("play");
 };
+musicSource.ontimeupdate = function(e) {
+    if (!Number.isNaN(e.target.duration)) {
+        let nextValue = e.target.currentTime / e.target.duration * 100;
+        progress.value = nextValue;
+    }
+};
+
+progress.oninput = function(e) {
+    let nextCurrent = musicSource.duration * e.target.value / 100;
+    musicSource.currentTime = nextCurrent;
+}
 
 document.querySelector("#backward-button").onclick = function() {
+    progress.value = 0;
     currentIndex = (currentIndex + 3 - 1) % 3;
     musicTitle.textContent = sourceList[currentIndex].title;
     musicCover.src = sourceList[currentIndex].img;
@@ -42,6 +55,7 @@ document.querySelector("#backward-button").onclick = function() {
     musicSource.play();
 };
 document.querySelector("#forward-button").onclick = function() {
+    progress.value = 0;
     currentIndex = (currentIndex + 3 + 1) % 3;
     musicTitle.textContent = sourceList[currentIndex].title;
     musicCover.src = sourceList[currentIndex].img;
