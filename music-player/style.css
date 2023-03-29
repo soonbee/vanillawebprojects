@@ -1,1 +1,79 @@
-/* empty */
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+:root {
+    font-family: Lato, sans-serif;
+}
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: rgba(252, 221, 221, 0.5); /* For browsers that do not support gradients */
+    background-image: linear-gradient(
+        rgba(252, 221, 221, 1) 0%,
+        rgb(247, 247, 247) 80%,
+        white 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+header {
+    margin-bottom: 20px;
+}
+#music-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+}
+#music-info {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 90%;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px 10px 0px 0px;
+    padding: 16px 16px 16px 135px;
+}
+#music-title {
+    margin-left: 2px;
+}
+#controller {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px 30px;
+    box-shadow: 0px 20px 25px 0px pink;
+}
+#music-cover {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 60px;
+}
+#music-cover + div {
+    width: 20px;
+    height: 20px;
+    background: white;
+    position: absolute;
+    margin-bottom: 60px;
+    margin-left: 40px; /* half width of music cover(50px) - half width of this(10px) */
+    border-radius: 50%;
+}
+#navigation {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+#navigation > button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}

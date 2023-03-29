@@ -7,6 +7,30 @@
   <title>Music Player</title>
 </head>
 <body>
+  <header>
+    <h1>Music Player</h1>
+  </header>
+  <div id="music-player">
+    <div id="music-info">
+      <span id="music-title">music name</span>
+      <input id="progress" type="range" value="0"/>
+    </div>
+    <div id="controller">
+      <img id="music-cover" src="images/summer.jpeg" />
+      <div></div>
+      <div id="navigation">
+        <button type="button">
+          <i class="fas fa-backward fa-lg" style="color: #dfdbdf;"></i>
+        </button>
+        <button id="play-button">
+          <i class="fas fa-play fa-2x" style="color: #cdc2d0;"></i>
+        </button>
+        <button type="button">
+          <i class="fas fa-forward fa-lg" style="color: #dfdbdf;"></i>
+        </button>
+      </div>
+    </div>
+  </div>
   <script src="scripts.js"></script>
   <script src="fontawesome-5.15.4/all.js"></script>
 </body>
