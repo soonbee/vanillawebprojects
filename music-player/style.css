@@ -35,7 +35,7 @@ header {
     flex-direction: column;
     box-sizing: border-box;
     width: 90%;
-    height: 70px;
+    height: 66px;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px 10px 0px 0px;
     padding: 16px 16px 16px 135px;
@@ -44,7 +44,9 @@ header {
     transition: transform 0.5s linear, opacity 0.5s linear;
 }
 #music-title {
+    font-size: 14px;
     margin-left: 2px;
+    margin-bottom: 4px;
 }
 #controller {
     z-index: 1;
@@ -62,10 +64,11 @@ header {
     animation-play-state: running;
 }
 #music-cover {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    aspect-ratio: 1;
     border-radius: 50%;
     margin-bottom: 60px;
+    border: 1px solid #00000010;
     animation-name: spin;
     animation-iteration-count: infinite;
     animation-duration: 3s;
@@ -78,7 +81,7 @@ header {
     background: white;
     position: absolute;
     margin-bottom: 60px;
-    margin-left: 40px; /* half width of music cover(50px) - half width of this(10px) */
+    margin-left: 45px; /* half width of music cover(55px) - half width of this(10px) */
     border-radius: 50%;
 }
 #navigation {
