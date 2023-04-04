@@ -4,6 +4,7 @@ let musicSource = document.querySelector("#music-source");
 let musicTitle = document.querySelector("#music-title");
 let musicCover = document.querySelector("#music-cover");
 let progress = document.querySelector("#progress");
+let progressContainer = document.querySelector("#progress-container");
 
 let currentIndex = 0;
 let sourceList = [
@@ -37,17 +38,17 @@ musicSource.onpause = function() {
 musicSource.ontimeupdate = function(e) {
   if (!Number.isNaN(e.target.duration)) {
     let nextValue = e.target.currentTime / e.target.duration * 100;
-    progress.value = nextValue;
+    updateProgess(nextValue);
   }
 };
 
-progress.oninput = function(e) {
-  let nextCurrent = musicSource.duration * e.target.value / 100;
-  musicSource.currentTime = nextCurrent;
-}
+progressContainer.onclick = function(e) {
+  let nextValue = e.offsetX / this.offsetWidth * musicSource.duration;
+  musicSource.currentTime = nextValue;
+};
 
 document.querySelector("#backward-button").onclick = function() {
-  progress.value = 0;
+  updateProgess(0);
   currentIndex = (currentIndex + 3 - 1) % 3;
   musicTitle.textContent = sourceList[currentIndex].title;
   musicCover.src = sourceList[currentIndex].img;
@@ -55,10 +56,20 @@ document.querySelector("#backward-button").onclick = function() {
   musicSource.play();
 };
 document.querySelector("#forward-button").onclick = function() {
-  progress.value = 0;
+  updateProgess(0);
   currentIndex = (currentIndex + 3 + 1) % 3;
   musicTitle.textContent = sourceList[currentIndex].title;
   musicCover.src = sourceList[currentIndex].img;
   musicSource.src = sourceList[currentIndex].src;
   musicSource.play();
+};
+
+function updateProgess(value) {
+  if (value < 0) {
+    progress.style.width = "0%";
+  } else if (value > 100) {
+    progress.style.width = "100%";
+  } else {
+    progress.style.width = `${value}%`
+  }
 };

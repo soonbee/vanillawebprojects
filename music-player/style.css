@@ -96,6 +96,19 @@ header {
     background-color: transparent;
     border: none;
 }
+#progress-container {
+    width: 100%;
+    background: white;
+    height: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#progress {
+    height: 100%;
+    width: 0%;
+    background: #fe8daa;
+    border-radius: 4px;
+}
 
 @keyframes spin {
     from {
