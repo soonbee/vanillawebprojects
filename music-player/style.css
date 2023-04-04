@@ -108,6 +108,7 @@ header {
     width: 0%;
     background: #fe8daa;
     border-radius: 4px;
+    transition: width 0.1s linear;
 }
 
 @keyframes spin {
