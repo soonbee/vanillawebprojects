@@ -36,8 +36,9 @@ musicSource.onpause = function() {
   musicPlayer.removeAttribute("play");
 };
 musicSource.ontimeupdate = function(e) {
-  if (!Number.isNaN(e.target.duration)) {
-    let nextValue = e.target.currentTime / e.target.duration * 100;
+  const { currentTime, duration} = e.target;
+  if (!Number.isNaN(duration)) {
+    let nextValue = currentTime / duration * 100;
     updateProgess(nextValue);
   }
 };
@@ -51,15 +52,22 @@ progressContainer.onclick = function(e) {
 };
 
 document.querySelector("#backward-button").onclick = function() {
-  updateProgess(0);
-  currentIndex = (currentIndex + 3 - 1) % 3;
+  updateProgess(0); // not required, but written for reactivity
+  currentIndex -= 1;
+  if (currentIndex < 0) {
+    currentIndex = sourceList.length - 1;
+  }
   musicTitle.textContent = sourceList[currentIndex].title;
   musicCover.src = sourceList[currentIndex].img;
   musicSource.src = sourceList[currentIndex].src;
   musicSource.play();
 };
 document.querySelector("#forward-button").onclick = function() {
-  updateProgess(0);
+  updateProgess(0); // not required, but written for reactivity
+  currentIndex += 1;
+  if (currentIndex > sourceList.length) {
+    currentIndex = 0;
+  }
   currentIndex = (currentIndex + 3 + 1) % 3;
   musicTitle.textContent = sourceList[currentIndex].title;
   musicCover.src = sourceList[currentIndex].img;
