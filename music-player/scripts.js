@@ -41,6 +41,9 @@ musicSource.ontimeupdate = function(e) {
     updateProgess(nextValue);
   }
 };
+musicSource.onended = function(e) {
+  document.querySelector("#forward-button").click();
+};
 
 progressContainer.onclick = function(e) {
   let nextValue = e.offsetX / this.offsetWidth * musicSource.duration;
