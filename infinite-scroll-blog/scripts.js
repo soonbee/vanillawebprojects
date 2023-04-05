@@ -1,7 +1,9 @@
 let mainEl = document.querySelector("main");
 let loader = document.querySelector(".loader");
+let searchInput = document.querySelector("#search-input");
 let limit = 5;
 let page = 1;
+let keyword = "";
 let loading = false;
 
 async function fetchPostList() {
@@ -24,6 +26,11 @@ function generatePostElement(id, title, body) {
     postEl.appendChild(postIndexEl);
     postEl.appendChild(postTitleEl);
     postEl.appendChild(postBodyEl);
+    if (keyword) {
+        if (!title.includes(keyword) && !body.includes(keyword)) {
+            postEl.classList.add('hide');
+        }
+    }
     return postEl;
 }
 
@@ -50,3 +57,18 @@ document.addEventListener("scroll", async () => {
     }
 });
 
+searchInput.addEventListener("input", e => {
+    keyword = e.target.value;
+    if (!keyword) {
+        return;
+    }
+    for (const child of mainEl.children) {
+        let title = child.querySelector("h2");
+        let body = child.querySelector("p");
+        if (!title.textContent.includes(keyword) && !body.textContent.includes(keyword)) {
+            child.classList.add('hide');
+        } else {
+            child.classList.remove('hide');
+        }
+    }
+});
