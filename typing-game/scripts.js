@@ -1,6 +1,7 @@
 let remainTime = 0;
 let remainTimeEl = document.querySelector("#remain-time");
 let score = 0;
+let timeBonus = 0;
 function* RandomWordGenerator() {
     const words = [
         'sigh',
@@ -57,3 +58,14 @@ function endGame() {
 startGame();
 
 document.querySelector("#reload").onclick = startGame;
+
+function loadDifficulty() {
+    timeBonus = localStorage.getItem("timeBonus");
+    document.querySelector("#difficulty-select").value = timeBonus;
+}
+loadDifficulty();
+
+document.querySelector("#difficulty-select").onchange = function() {
+    timeBonus = this.value;
+    localStorage.setItem("timeBonus", timeBonus);
+}
