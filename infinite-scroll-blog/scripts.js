@@ -59,16 +59,20 @@ document.addEventListener("scroll", async () => {
 
 searchInput.addEventListener("input", e => {
     keyword = e.target.value;
+    let posts = document.querySelectorAll(".post");
     if (!keyword) {
+        for (post of posts) {
+            post.classList.remove('hide');
+        }
         return;
     }
-    for (const child of mainEl.children) {
-        let title = child.querySelector("h2");
-        let body = child.querySelector("p");
-        if (!title.textContent.includes(keyword) && !body.textContent.includes(keyword)) {
-            child.classList.add('hide');
+    for (post of posts) {
+        let title = post.querySelector("h2").textContent;
+        let body = post.querySelector("p").textContent;
+        if (!title.includes(keyword) && !body.includes(keyword)) {
+            post.classList.add('hide');
         } else {
-            child.classList.remove('hide');
+            post.classList.remove('hide');
         }
     }
 });
