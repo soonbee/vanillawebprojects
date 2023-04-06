@@ -82,3 +82,7 @@ document.querySelector("#game-answer").oninput = function() {
         document.querySelector("#current-score").textContent = score;
     }
 }
+
+document.querySelector("#setting").onclick = function() {
+    document.querySelector("header").classList.toggle("hide");
+}
