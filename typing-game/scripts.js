@@ -1,4 +1,4 @@
-let remainTime = 10;
+let remainTime = 0;
 let remainTimeEl = document.querySelector("#remain-time");
 let score = 0;
 function* RandomWordGenerator() {
@@ -32,6 +32,7 @@ function* RandomWordGenerator() {
 const randomWordGenerator = RandomWordGenerator();
 
 function startGame() {
+    remainTime = 10;
     const nextWord = randomWordGenerator.next().value;   
     document.querySelector("#game-target").textContent = nextWord;
     remainTimeEl.textContent = remainTime;
@@ -54,3 +55,5 @@ function endGame() {
 }
 
 startGame();
+
+document.querySelector("#reload").onclick = startGame;
