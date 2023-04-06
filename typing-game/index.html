@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="fontawesome-5.15.4/all.css">
+  <title>Speed Typer</title>
+</head>
+<body>
+  <header>
+    <span>Difficulty</span>
+    <select id="difficulty-select">
+      <option value="5">Easy</option>
+      <option value="3">Medium</option>
+      <option value="1">Hard</option>
+    </select>
+  </header>
+  <main>
+    <div id="start" class="game-container">
+      <h2 class="game-title">👩‍💻 Speed Typer 👨‍💻</h2>
+      <div id="game-indicator">
+        <span>Time left: <span id="remain-time">10</span>s</span>
+        <span>Score: <span id="current-score">0</span></span>
+      </div>
+      <span id="game-description">Type the following:</span>
+      <span id="game-target"></span>
+      <input id="game-answer" placeholder="Type the word here..." />
+    </div>
+    <div id="end" class="game-container hide">
+      <h2>Time ran out</h2>
+      <p>Your final score is <span id="score">0</span></p>
+      <button type="button" id="reload">Reload</button>
+    </div>
+  </main>
+  <button id="setting">
+    <i class="fas fa-cog"></i>
+  </button>
+  <script src="scripts.js"></script>
+  <script src="fontawesome-5.15.4/all.js"></script>
+</body>
+</html>
