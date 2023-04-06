@@ -18,7 +18,7 @@ function generatePostElement(id, title, body) {
     let postIndexEl = document.createElement("div");
     let postTitleEl = document.createElement("h2");
     let postBodyEl = document.createElement("p");
-    let a = postEl.classList.add("post");
+    postEl.classList.add("post");
     postIndexEl.classList.add("post-index");
     postIndexEl.textContent = id;
     postTitleEl.textContent = title;
