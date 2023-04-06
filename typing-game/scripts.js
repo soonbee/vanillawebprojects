@@ -4,26 +4,26 @@ let score = 0;
 let timeBonus = 0;
 function* RandomWordGenerator() {
     const words = [
-        'sigh',
-        'tense',
-        'airplane',
-        'ball',
-        'pies',
-        'juice',
-        'warlike',
-        'bad',
-        'north',
-        'dependent',
-        'steer',
-        'silver',
-        'highfalutin',
-        'superficial',
-        'quince',
-        'eight',
-        'feeble',
-        'admit',
-        'drag',
-        'loving'
+        "sigh",
+        "tense",
+        "airplane",
+        "ball",
+        "pies",
+        "juice",
+        "warlike",
+        "bad",
+        "north",
+        "dependent",
+        "steer",
+        "silver",
+        "highfalutin",
+        "superficial",
+        "quince",
+        "eight",
+        "feeble",
+        "admit",
+        "drag",
+        "loving"
     ].sort(() => Math.random() - 0.5);
     let cur = 0;
     while (cur < words.length) {
