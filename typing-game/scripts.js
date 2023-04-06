@@ -1,3 +1,6 @@
+let remainTime = 10;
+let remainTimeEl = document.querySelector("#remain-time");
+let score = 0;
 function* RandomWordGenerator() {
     const words = [
         'sigh',
@@ -31,6 +34,23 @@ const randomWordGenerator = RandomWordGenerator();
 function startGame() {
     const nextWord = randomWordGenerator.next().value;   
     document.querySelector("#game-target").textContent = nextWord;
+    remainTimeEl.textContent = remainTime;
+    let iid = setInterval(() => {
+        remainTime--;
+        if (remainTime < 0) {
+            clearInterval(iid);
+            endGame();
+        }
+        remainTimeEl.textContent = remainTime;
+    }, 1000);
+    document.querySelector("#start").classList.remove("hide");
+    document.querySelector("#end").classList.add("hide");
+}
+
+function endGame() {
+    document.querySelector("#score").textContent = score;
+    document.querySelector("#start").classList.add("hide");
+    document.querySelector("#end").classList.remove("hide");
 }
 
 startGame();

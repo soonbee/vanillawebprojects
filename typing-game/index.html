@@ -16,17 +16,17 @@
     </select>
   </header>
   <main>
-    <div class="game-container">
+    <div id="start" class="game-container">
       <h2 class="game-title">👩‍💻 Speed Typer 👨‍💻</h2>
       <div id="game-indicator">
-        <span>Time left: 10s</span>
+        <span>Time left: <span id="remain-time">10</span>s</span>
         <span>Score: 0</span>
       </div>
       <span id="game-description">Type the following:</span>
       <span id="game-target"></span>
       <input id="game-answer" placeholder="Type the word here..." />
     </div>
-    <div class="game-container hide">
+    <div id="end" class="game-container hide">
       <h2>Time ran out</h2>
       <p>Your final score is <span id="score">0</span></p>
       <button type="button" id="reload">Reload</button>
