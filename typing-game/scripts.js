@@ -2,6 +2,7 @@ let remainTime = 0;
 let remainTimeEl = document.querySelector("#remain-time");
 let score = 0;
 let timeBonus = 0;
+let answer = "";
 function* RandomWordGenerator() {
     const words = [
         "sigh",
@@ -34,8 +35,8 @@ const randomWordGenerator = RandomWordGenerator();
 
 function startGame() {
     remainTime = 10;
-    const nextWord = randomWordGenerator.next().value;   
-    document.querySelector("#game-target").textContent = nextWord;
+    answer = randomWordGenerator.next().value;   
+    document.querySelector("#game-target").textContent = answer;
     remainTimeEl.textContent = remainTime;
     let iid = setInterval(() => {
         remainTime--;
@@ -68,4 +69,16 @@ loadDifficulty();
 document.querySelector("#difficulty-select").onchange = function() {
     timeBonus = this.value;
     localStorage.setItem("timeBonus", timeBonus);
+}
+
+document.querySelector("#game-answer").oninput = function() {
+    if (this.value === answer) {
+        this.value = "";
+        answer = randomWordGenerator.next().value;   
+        document.querySelector("#game-target").textContent = answer;
+        remainTime += Number(timeBonus);
+        remainTimeEl.textContent = remainTime;
+        score += 1;
+        document.querySelector("#current-score").textContent = score;
+    }
 }
