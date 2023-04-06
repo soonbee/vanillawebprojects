@@ -3,6 +3,7 @@ let remainTimeEl = document.querySelector("#remain-time");
 let score = 0;
 let timeBonus = 0;
 let answer = "";
+let timer = null;
 function* RandomWordGenerator() {
     const words = [
         "sigh",
@@ -35,13 +36,13 @@ const randomWordGenerator = RandomWordGenerator();
 
 function startGame() {
     remainTime = 10;
-    answer = randomWordGenerator.next().value;   
+    answer = randomWordGenerator.next().value;
     document.querySelector("#game-target").textContent = answer;
     remainTimeEl.textContent = remainTime;
-    let iid = setInterval(() => {
+    timer = setInterval(() => {
         remainTime--;
         if (remainTime < 0) {
-            clearInterval(iid);
+            document.querySelector("#end > h2").textContent = "Time ran out";
             endGame();
         }
         remainTimeEl.textContent = remainTime;
@@ -51,6 +52,7 @@ function startGame() {
 }
 
 function endGame() {
+    clearInterval(timer);
     document.querySelector("#score").textContent = score;
     document.querySelector("#start").classList.add("hide");
     document.querySelector("#end").classList.remove("hide");
@@ -73,13 +75,17 @@ document.querySelector("#difficulty-select").onchange = function() {
 
 document.querySelector("#game-answer").oninput = function() {
     if (this.value === answer) {
+        score += 1;
+        document.querySelector("#current-score").textContent = score;
         this.value = "";
-        answer = randomWordGenerator.next().value;   
+        answer = randomWordGenerator.next().value;
+        if (answer === undefined) {
+            document.querySelector("#end > h2").textContent = "Game clear!";
+            endGame();
+        }
         document.querySelector("#game-target").textContent = answer;
         remainTime += Number(timeBonus);
         remainTimeEl.textContent = remainTime;
-        score += 1;
-        document.querySelector("#current-score").textContent = score;
     }
 }
 
