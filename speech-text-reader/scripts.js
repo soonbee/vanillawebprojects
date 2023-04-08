@@ -1,5 +1,8 @@
 const mainEl = document.querySelector("main");
+const toggleButton = document.querySelector("#modal-toggle");
+const voiceSelect = document.querySelector("#voices");
 
+let voices = [];
 const items = [
   {image: "images/drink.jpeg", text: "I'm thirsty"},
   {image: "images/food.jpeg", text: "I'm hungry"},
@@ -23,5 +26,16 @@ function init() {
     mainEl.appendChild(itemEl);
   });
 }
+
+window.speechSynthesis.onvoiceschanged = function() {
+  voices = window.speechSynthesis.getVoices();
+  voiceSelect.innerHTML = voices.map((voice, idx) => (`
+    <option value="${idx}">${voice.name} ${voice.lang}</option>
+  `));
+};
+
+toggleButton.onclick = function() {
+  document.querySelector(".modal").toggleAttribute("hide");
+};
 
 init();

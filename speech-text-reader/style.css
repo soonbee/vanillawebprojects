@@ -12,6 +12,11 @@ button {
     padding: 10px;
     font-size: 16px;
 }
+select {
+    background-color: darksalmon;
+    color: white;
+    padding: 5px 0px;
+}
 body {
     background-color: #ffefea;
 }
@@ -53,4 +58,29 @@ main {
 .item > p {
     text-align: center;
     text-transform: uppercase;
+}
+.modal {
+    box-sizing: border-box;
+    width: 800px;
+    padding: 0 20px 20px 20px;
+    position: fixed;
+    top: 150px;
+    left: calc(50% - 400px);
+    background-color: #333;
+    color: white;
+    border-radius: 4px;
+    transition: transform 1s ease-in-out;
+}
+.modal[hide] {
+    transform: translateY(calc(-100% - 150px));
+}
+.modal-content {
+    display: flex;
+    flex-direction: column;
+}
+.modal-content > *:not(:last-child) {
+    margin-bottom: 20px;
+}
+#user-input {
+    height: 150px;
 }
