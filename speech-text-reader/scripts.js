@@ -37,6 +37,13 @@ function init() {
     };
     mainEl.appendChild(itemEl);
   });
+};
+
+function toggleModal() {
+  document.querySelector(".modal").toggleAttribute("hide");
+  setTimeout(() => {
+    userInput.value = "";
+  }, 600);
 }
 
 window.speechSynthesis.onvoiceschanged = function() {
@@ -48,12 +55,9 @@ window.speechSynthesis.onvoiceschanged = function() {
   voiceSelect.value = 0;
 };
 
-toggleButton.onclick = function() {
-  document.querySelector(".modal").toggleAttribute("hide");
-  setTimeout(() => {
-    userInput.value = "";
-  }, 600)
-};
+
+toggleButton.onclick = toggleModal;
+document.querySelector("#close").onclick = toggleModal;
 
 voiceSelect.onchange = function() {
   currentVoice = voices[this.value];

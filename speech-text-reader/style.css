@@ -12,6 +12,10 @@ button {
     padding: 10px;
     font-size: 16px;
 }
+.button-base {
+    background-color: transparent;
+    padding: 0;
+}
 select {
     background-color: darksalmon;
     color: white;
@@ -73,10 +77,15 @@ main {
     background-color: #333;
     color: white;
     border-radius: 4px;
-    transition: transform 1s ease-in-out;
+    transition: transform 0.5s ease-in-out;
 }
 .modal[hide] {
     transform: translateY(calc(-100% - 150px));
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .modal-content {
     display: flex;
