@@ -1,11 +1,14 @@
 const mainEl = document.querySelector("main");
 const toggleButton = document.querySelector("#modal-toggle");
 const voiceSelect = document.querySelector("#voices");
+const userInput = document.querySelector("#user-input");
 
+const synth = window.speechSynthesis;
 let voices = [];
+let currentVoice = null;
 const items = [
   {image: "images/drink.jpeg", text: "I'm thirsty"},
-  {image: "images/food.jpeg", text: "I'm hungry"},
+  {image: "images/food.jpeg", text: "I'm hungry", },
   {image: "images/tired.jpeg", text: "I'm tired"},
   {image: "images/hurt.jpeg", text: "I'm hurt"},
   {image: "images/happy.jpeg", text: "I'm happy"},
@@ -23,6 +26,15 @@ function init() {
     const itemEl = document.createElement("div");
     itemEl.classList.add("item");
     itemEl.innerHTML = `<img src="${item.image}" alt="" /><p>${item.text}</p>`;
+    const utterance = new SpeechSynthesisUtterance(item.text);
+    itemEl.onclick = function() {
+      utterance.voice = currentVoice;
+      synth.speak(utterance);
+      itemEl.classList.add("active");
+      setTimeout(() => {
+        itemEl.classList.remove("active");
+      }, 1000);
+    };
     mainEl.appendChild(itemEl);
   });
 }
@@ -32,10 +44,25 @@ window.speechSynthesis.onvoiceschanged = function() {
   voiceSelect.innerHTML = voices.map((voice, idx) => (`
     <option value="${idx}">${voice.name} ${voice.lang}</option>
   `));
+  currentVoice = voices[0];
+  voiceSelect.value = 0;
 };
 
 toggleButton.onclick = function() {
   document.querySelector(".modal").toggleAttribute("hide");
+  setTimeout(() => {
+    userInput.value = "";
+  }, 600)
+};
+
+voiceSelect.onchange = function() {
+  currentVoice = voices[this.value];
+};
+
+document.querySelector("#speech-action").onclick = function() {
+  const utterance = new SpeechSynthesisUtterance(userInput.value);
+  utterance.voice = currentVoice;
+  synth.speak(utterance);
 };
 
 init();

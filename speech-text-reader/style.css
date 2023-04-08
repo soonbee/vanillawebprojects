@@ -50,6 +50,10 @@ main {
     border-radius: 4px;;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
+}
+.item.active {
+    box-shadow: 0px 0px 8px 2px darksalmon;
 }
 .item > img {
     height: 200px;
