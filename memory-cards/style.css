@@ -1,1 +1,77 @@
-/* empty */
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+
+:root {
+    font-family: Lato, sans-serif;
+}
+
+button {
+    cursor: pointer;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    background-color: transparent;
+    border-color: rgba(0, 0, 0, 0.3);
+    outline: none;
+    border-width: 1px;
+}
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+#card-container {
+    margin-bottom: 10px;
+}
+.flip-card {
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+    width: 500px;
+    height: 300px;
+    border: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flip-indicator {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color:rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+}
+.content {
+    font-size: 1.5em;
+}
+#pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#pagination-container button {
+    border: none;
+}
+#page-indicator {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+#add {
+    font-size: 12px;
+    margin-left: 20px;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#clear-all {
+    font-size: 14px;
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+}

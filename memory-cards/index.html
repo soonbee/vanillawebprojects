@@ -7,6 +7,39 @@
   <title>Memory Cards</title>
 </head>
 <body>
+  <div id="container">
+    <header>
+      <h1>Memory Cards</h1>
+      <button id="add">
+        <i class="fas fa-plus"></i>
+        Add New Card
+      </button>
+    </header>
+    <main>
+      <div id="card-container">
+        <div class="flip-card">
+          <span class="flip-indicator">
+            <i class="fas fa-sync"></i>
+            Filp
+          </span>
+          <span class="content">question</span>
+        </div>
+      </div>
+      <div id="pagination-container">
+        <button id="prev">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <div id="page-indicator">1/2</div>
+        <button id="next">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </main>
+  </div>
+  <button id="clear-all">
+    <i class="fas fa-trash"></i>
+    Clear Cards
+  </button>
   <script src="scripts.js"></script>
   <script src="fontawesome-5.15.4/all.js"></script>
 </body>
