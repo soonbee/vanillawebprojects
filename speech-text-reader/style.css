@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+:root {
+    font-family: Lato, sans-serif;
+}
+button {
+    background-color: darksalmon;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+}
+.button-base {
+    background-color: transparent;
+    padding: 0;
+}
+select {
+    background-color: darksalmon;
+    color: white;
+    padding: 5px 0px;
+}
+body {
+    background-color: #ffefea;
+}
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    color: white;
+}
+@media (max-width: 1300px) {
+    main {
+      grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 1000px) {
+    main {
+      grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 660px) {
+    main {
+      grid-template-columns: repeat(1, 1fr);
+    }
+}
+.item {
+    background-color: darksalmon;
+    border-radius: 4px;;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.item.active {
+    box-shadow: 0px 0px 8px 2px darksalmon;
+}
+.item > img {
+    height: 200px;
+    object-fit: cover;
+}
+.item > p {
+    text-align: center;
+    text-transform: uppercase;
+}
+.modal {
+    box-sizing: border-box;
+    width: 800px;
+    padding: 0 20px 20px 20px;
+    position: fixed;
+    top: 150px;
+    left: calc(50% - 400px);
+    background-color: #333;
+    color: white;
+    border-radius: 4px;
+    transition: transform 0.5s ease-in-out;
+}
+.modal[hide] {
+    transform: translateY(calc(-100% - 150px));
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-content {
+    display: flex;
+    flex-direction: column;
+}
+.modal-content > *:not(:last-child) {
+    margin-bottom: 20px;
+}
+#user-input {
+    height: 150px;
+}

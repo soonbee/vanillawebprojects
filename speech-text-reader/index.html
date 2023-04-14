@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" href="style.css">
+  <title>Speech Text Reader</title>
+</head>
+<body>
+  <header>
+    <h1>Speech Text Reader</h1>
+    <button id="modal-toggle">Toggle Text Box</button>
+  </header>
+  <main></main>
+  <div class="modal" hide>
+    <div class="modal-header">
+      <h3>Choose Voice</h3>
+      <button id="close" class="button-base">X</button>
+    </div>
+    <div class="modal-content">
+      <select id="voices">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+      <textarea id="user-input" placeholder="Enter text to read..."></textarea>
+      <button id="speech-action">Read Text</button>
+    </div>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+</html>
