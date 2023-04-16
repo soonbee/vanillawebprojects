@@ -44,6 +44,13 @@ document.querySelector("#submit").onclick = function() {
   addPage.classList.remove("show");
 }
 
+document.querySelector("#clear-all").onclick = function() {
+  localStorage.removeItem("data");
+  cardItems = [];
+  cardContainer.innerHTML = "";
+  updatePageIndicator();
+}
+
 function loadData() {
   let items = localStorage.getItem("data") || "[]";
   items = JSON.parse(items);
