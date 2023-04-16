@@ -22,34 +22,45 @@ document.querySelector("#prev").onclick = function() {
   if (currentIndex <= 0) {
     return;
   }
-  cardElements[currentIndex].classList.add("right");
+  cardElements[currentIndex].className = "flip-card right"
   currentIndex -= 1;
-  cardElements[currentIndex].classList.remove("left");
+  cardElements[currentIndex].className = "flip-card active"
   updatePageIndicator();
 }
 document.querySelector("#next").onclick = function() {
   if (currentIndex >= cardElements.length - 1) {
     return;
   }
-  cardElements[currentIndex].classList.add("left");
+  cardElements[currentIndex].className = "flip-card left"
   currentIndex += 1;
-  cardElements[currentIndex].classList.remove("right");
+  cardElements[currentIndex].className = "flip-card active"
   updatePageIndicator();
 }
 
 function generateCard() {
   cardItems.forEach((item, idx) => {
     let cardElement = document.createElement("div");
-    cardElement.className = "flip-card";
+    cardElement.className = "flip-card right";
     cardElement.innerHTML = `\
 <span class="flip-indicator">
   <i class="fas fa-sync"></i>
   Filp
 </span>
-<span class="content">${item.question}</span>`
+<div class="content">
+  <span class="question">${item.question}</span>
+  <span class="answer">${item.answer}</span>
+</div>`
+    cardElement.onclick = function() {
+      cardElement.classList.toggle("show-answer");
+      cardElement.classList.add("flipping");
+      cardElement.onanimationend = function() {
+        cardElement.classList.remove("flipping");
+      }
+    }
     cardElements.push(cardElement);
-    if (idx > 0) {
-      cardElement.classList.add("right");
+    if (idx === 0) {
+      cardElement.classList.remove("right");
+      cardElement.classList.add("active");
     };
     cardContainer.appendChild(cardElement);
   });

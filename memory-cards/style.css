@@ -56,6 +56,9 @@ body {
     justify-content: center;
     transition: transform 0.4s ease, opacity 0.4s ease;
 }
+.flip-card.active {
+    z-index: 3;
+}
 .flip-card.left {
     opacity: 0;
     transform: translateX(-50%);
@@ -71,8 +74,29 @@ body {
     color:rgba(0, 0, 0, 0.2);
     font-weight: bold;
 }
-.content {
+.flip-card.flipping {
+    animation-name: flip;
+    animation-iteration-count: 1;
+    animation-duration: 0.4s;
+}
+.flip-card .content {
+    position: relative;
+}
+.flip-card .question {
+    position: absolute;
     font-size: 1.5em;
+    transition: opacity 0.4s cubic-bezier(1.000, 0.000, 0.000, 1.000);
+}
+.flip-card .answer {
+    font-size: 1.5em;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(1.000, 0.000, 0.000, 1.000);
+}
+.flip-card.show-answer .question {
+    opacity: 0;
+}
+.flip-card.show-answer .answer {
+    opacity: 1;
 }
 #pagination-container {
     display: flex;
@@ -105,7 +129,7 @@ body {
 }
 #add-container.show {
     opacity: 1;
-    z-index: 1;
+    z-index: 10;
 }
 #add-container textarea {
     box-sizing: border-box;
@@ -117,4 +141,16 @@ body {
 #submit {
     font-size: 14px;
     margin-top: 10px;
+}
+
+@keyframes flip {
+    0% {
+        transform: rotateX(0deg);
+    }
+    50% {
+        transform: rotateX(90deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
 }
