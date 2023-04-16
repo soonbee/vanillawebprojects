@@ -41,16 +41,28 @@ body {
 }
 #card-container {
     margin-bottom: 10px;
+    position: relative;
+    width: 500px;
+    height: 300px;
 }
 .flip-card {
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
-    width: 500px;
-    height: 300px;
+    width: 100%;
+    height: 100%;
     border: none;
-    position: relative;
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.flip-card.left {
+    opacity: 0;
+    transform: translateX(-50%);
+}
+.flip-card.right {
+    opacity: 0;
+    transform: translateX(50%);
 }
 .flip-indicator {
     position: absolute;
@@ -78,6 +90,7 @@ body {
     bottom: 20px;
 }
 #add-container {
+    z-index: -1;
     display: flex;
     flex-direction: column;
     justify-content: center;
