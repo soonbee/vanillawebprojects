@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="fontawesome-5.15.4/all.css">
+  <title>Memory Cards</title>
+</head>
+<body>
+  <div id="add-container">
+    <header>
+      <h1>
+        Add New Card
+        <button id="close" class="button-base">
+          <i class="fas fa-times"></i>
+        </button>
+      </h1>
+    </header>
+    <main>
+      <p>Qusetion</p>
+      <textarea id="question-input" placeholder="Enter question..."></textarea>
+      <p>Answer</p>
+      <textarea id="answer-input" placeholder="Enter answer..."></textarea>
+    </main>
+      <button id="submit">
+        <i class="fas fa-plus"></i>
+        Add Card
+      </button>
+  </div>
+  <div id="main-container">
+    <header>
+      <h1>
+        Memory Cards
+        <button id="add">
+          <i class="fas fa-plus"></i>
+          Add New Card
+        </button>
+      </h1>
+    </header>
+    <main>
+      <div id="card-container"></div>
+      <div id="pagination-container">
+        <button id="prev" class="button-base">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <div id="page-indicator"></div>
+        <button id="next" class="button-base">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </main>
+  </div>
+  <button id="clear-all">
+    <i class="fas fa-trash"></i>
+    Clear Cards
+  </button>
+  <script src="scripts.js"></script>
+  <script src="fontawesome-5.15.4/all.js"></script>
+</body>
+</html>
