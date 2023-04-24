@@ -1,0 +1,39 @@
+:root {
+    --primary-color: #0095dd;
+}
+
+button {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    background-color: black;
+    border-radius: 4px;
+    color: white;
+    outline: none;
+    border: none;
+    padding: 0.8em 1.5em;
+    cursor: pointer;
+}
+button:active {
+    transform: scale(0.98);
+}
+button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#title {
+    font-size: 45px;
+}
+#game-screen {
+    border-radius: 4px;
+    background-color: white;
+}
