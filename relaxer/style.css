@@ -67,7 +67,7 @@ main {
     height: calc(100% + 25px * 2 + 20px);
     display: flex;
     justify-content: center;
-    animation: spin 6s linear;
+    animation: rotate 6s linear;
     animation-iteration-count: infinite;
 }
 #timer {
@@ -85,7 +85,7 @@ main {
     100% { transform: scale(1);}
 }
 
-@keyframes spin {
+@keyframes rotate {
     0% { transform: rotate(0deg); height: calc(100% + 25px * 2 + 20px);}
     40% { transform: rotate(144deg); height: calc(120% + 25px * 2 + 20px);}
     60% { transform: rotate(216deg); height: calc(120% + 25px * 2 + 20px);}
