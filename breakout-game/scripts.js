@@ -17,12 +17,26 @@ let paddleHeight = 10;
 let paddleSpeed = 0;
 let paddleMovement = 0;
 
-// 5 row 9 col
-let bricks = Array.from({length: 45}, (_, idx) => idx).map(el => ({
-    x: 45 + 80 * (el % 9), y: 60 + 30 * Math.floor(el / 9), w: 70, h: 20
-}));
+// brick spec
+let bricks = [];
+let row = 5;
+let col = 9;
+let brickWidth = 70;
+let horizontalGap = 10;
+let brickHeight = 20;
+let verticalGap = 10;
 
-function animate(){
+function reset() {
+    bricks = Array.from({length: row * col}, (_, idx) => idx).map(el => ({
+        x: 45 + (brickWidth + horizontalGap) * (el % col),
+        y: 60 + (brickHeight + verticalGap) * Math.floor(el / col),
+        w: brickWidth,
+        h: brickHeight,
+    }));
+    score = 0;
+}
+
+function animate() {
     // clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -65,10 +79,14 @@ function animate(){
     }
 
     // detect edge collision
-    if (ballPositionX > canvas.width - ballRadius || ballPositionX < ballRadius) {
+    if (ballPositionX >= canvas.width - ballRadius || ballPositionX <= ballRadius) {
         ballVectorX *= -1;
     }
-    if (ballPositionY > canvas.height - ballRadius || ballPositionY < ballRadius) {
+    if (ballPositionY >= canvas.height - ballRadius) {
+        ballVectorY *= -1;
+        reset();
+    }
+    if (ballPositionY <= ballRadius) {
         ballVectorY *= -1;
     }
 
@@ -115,4 +133,5 @@ window.addEventListener("keyup", function(e) {
     paddleSpeed = 0;
 });
 
+reset();
 animate(); 
