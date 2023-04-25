@@ -1,6 +1,8 @@
 const canvas = document.getElementById("game-screen");
 const ctx = canvas.getContext("2d");
 
+let score = 0;
+
 // ball spec
 let ballPositionX = 400;
 let ballPositionY = 500;
@@ -89,7 +91,12 @@ function animate(){
     });
     if (collided >= 0) {
         bricks.splice(collided, 1);
+        score += 1;
     }
+
+    ctx.fillStyle = "#0095dd";
+    ctx.font = "20px Arial, Helvetica, sans-serif";
+    ctx.fillText(`Score: ${score}`, 700, 30);
 
     // loop animate
     requestAnimationFrame(animate);
