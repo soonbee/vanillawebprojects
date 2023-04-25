@@ -2,9 +2,10 @@ const canvas = document.getElementById("game-screen");
 const ctx = canvas.getContext("2d");
 
 // ball spec
-let xPosition = 200;
-let yPosition = 200;
-let xVector = 1;
+let ballPositionX = 200;
+let ballPositionY = 200;
+let ballSpeed = 3;
+let xVector = -1;
 let yVector = 1;
 let radius = 10;
 
@@ -26,10 +27,8 @@ function animate(){
     ctx.fillStyle = "#0095dd";
     bricks.forEach(brick => {
         ctx.fillRect(brick.x, brick.y, brick.w, brick.h);
-    })
+    });
 
-    // draw paddle
-    ctx.fillStyle = "#0095dd";
     // move paddle position
     paddleMovement += paddleSpeed;
     paddleMovement = Math.max(paddleMovement, paddleWidth / 2 - canvas.width / 2);
@@ -37,30 +36,39 @@ function animate(){
 
     // draw paddle
     ctx.fillStyle = "#0095dd";
+    let paddlePositionX = canvas.width / 2 - paddleWidth / 2 + paddleMovement
+    let paddlePositionY = canvas.height - 20;
     ctx.fillRect(
-        canvas.width / 2 - paddleWidth / 2 + paddleMovement,
-        canvas.height - 20,
+        paddlePositionX,
+        paddlePositionY,
         paddleWidth,
         paddleHeight,
-    )
-
-    // detect collision
-    if (xPosition > canvas.width - radius || xPosition < radius) {
-        xVector *= -1;
-    }
-    if (yPosition > canvas.height - radius || yPosition < radius) {
-        yVector *= -1;
-    }
+    );
 
     // move ball position
-    xPosition = xPosition + xVector;
-    yPosition = yPosition + yVector;
+    ballPositionX = ballPositionX + xVector * ballSpeed;
+    ballPositionY = ballPositionY + yVector * ballSpeed;
 
     // draw ball
     ctx.fillStyle = "#0095dd";
     ctx.beginPath();
-    ctx.arc(xPosition, yPosition, radius, 0, Math.PI * 2);
+    ctx.arc(ballPositionX, ballPositionY, radius, 0, Math.PI * 2);
     ctx.fill();
+
+    // detect paddle collision
+    if (ballPositionX >= paddlePositionX && ballPositionX <= paddlePositionX + paddleWidth) {
+        if (ballPositionY + radius >= paddlePositionY) {
+            yVector *= -1;
+        }
+    }
+
+    // detect edge collision
+    if (ballPositionX > canvas.width - radius || ballPositionX < radius) {
+        xVector *= -1;
+    }
+    if (ballPositionY > canvas.height - radius || ballPositionY < radius) {
+        yVector *= -1;
+    }
 
     // loop animate
     requestAnimationFrame(animate);
