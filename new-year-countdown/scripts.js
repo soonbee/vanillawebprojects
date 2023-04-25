@@ -8,6 +8,12 @@ let hoursEl = document.querySelector("#hours > .value");
 let minutesEl = document.querySelector("#minutes > .value");
 let secondsEl = document.querySelector("#seconds > .value");
 
+setTimeout(() => {
+  document.querySelector("#spinner").classList.add("hide");
+  document.querySelector("#countdown").classList.remove("hide");
+  document.querySelector("#next-year").classList.remove("hide");
+}, 500);
+
 setInterval(() => {
   let current = new Date();
   let currentYear = current.getFullYear();
