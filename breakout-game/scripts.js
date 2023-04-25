@@ -2,12 +2,12 @@ const canvas = document.getElementById("game-screen");
 const ctx = canvas.getContext("2d");
 
 // ball spec
-let ballPositionX = 200;
-let ballPositionY = 200;
+let ballPositionX = 400;
+let ballPositionY = 500;
 let ballSpeed = 3;
-let xVector = -1;
-let yVector = 1;
-let radius = 10;
+let ballVectorX = -1;
+let ballVectorY = -1;
+let ballRadius = 10;
 
 // paddle spec
 let paddleWidth = 80;
@@ -46,28 +46,49 @@ function animate(){
     );
 
     // move ball position
-    ballPositionX = ballPositionX + xVector * ballSpeed;
-    ballPositionY = ballPositionY + yVector * ballSpeed;
+    ballPositionX = ballPositionX + ballVectorX * ballSpeed;
+    ballPositionY = ballPositionY + ballVectorY * ballSpeed;
 
     // draw ball
     ctx.fillStyle = "#0095dd";
     ctx.beginPath();
-    ctx.arc(ballPositionX, ballPositionY, radius, 0, Math.PI * 2);
+    ctx.arc(ballPositionX, ballPositionY, ballRadius, 0, Math.PI * 2);
     ctx.fill();
 
     // detect paddle collision
     if (ballPositionX >= paddlePositionX && ballPositionX <= paddlePositionX + paddleWidth) {
-        if (ballPositionY + radius >= paddlePositionY) {
-            yVector *= -1;
+        if (ballPositionY + ballRadius >= paddlePositionY) {
+            ballVectorY *= -1;
         }
     }
 
     // detect edge collision
-    if (ballPositionX > canvas.width - radius || ballPositionX < radius) {
-        xVector *= -1;
+    if (ballPositionX > canvas.width - ballRadius || ballPositionX < ballRadius) {
+        ballVectorX *= -1;
     }
-    if (ballPositionY > canvas.height - radius || ballPositionY < radius) {
-        yVector *= -1;
+    if (ballPositionY > canvas.height - ballRadius || ballPositionY < ballRadius) {
+        ballVectorY *= -1;
+    }
+
+    // detect brick collision
+    let collided = -1;
+    bricks.forEach((brick, idx) => {
+        ctx.fillRect(brick.x, brick.y, brick.w, brick.h);
+        if (brick.x <= ballPositionX && ballPositionX <= brick.x + brick.w) {
+            if (brick.y - ballRadius <= ballPositionY && ballPositionY <= brick.y + brick.h + ballRadius) {
+                ballVectorY *= -1;
+                collided = idx;
+            }
+        }
+        if (brick.y <= ballPositionY && ballPositionY <= brick.y + brick.h) {
+            if (brick.x - ballRadius <= ballPositionX && ballPositionX <= brick.x + brick.w + ballRadius) {
+                ballVectorX *= -1;
+                collided = idx;
+            }
+        }
+    });
+    if (collided >= 0) {
+        bricks.splice(collided, 1);
     }
 
     // loop animate
