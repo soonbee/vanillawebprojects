@@ -3,9 +3,6 @@
 }
 
 button {
-    position: fixed;
-    top: 30px;
-    left: 30px;
     background-color: black;
     border-radius: 4px;
     color: white;
@@ -36,4 +33,23 @@ body {
 #game-screen {
     border-radius: 4px;
     background-color: #f0f0f0;
+}
+#show-rules {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+}
+aside {
+    box-sizing: border-box;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: -400px;
+    width: 400px;
+    height: 100vh;
+    padding: 20px;
+    transition: transform 1s;
+}
+aside.show {
+    transform: translateX(100%);
 }

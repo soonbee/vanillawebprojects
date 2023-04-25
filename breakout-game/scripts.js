@@ -1,3 +1,6 @@
+const showButton = document.querySelector("#show-rules");
+const closeButton = document.querySelector("#close");
+const manual = document.querySelector("aside");
 const canvas = document.getElementById("game-screen");
 const ctx = canvas.getContext("2d");
 
@@ -128,10 +131,16 @@ window.addEventListener("keydown", function(e) {
         paddleSpeed = 10;
     }
 });
-
 window.addEventListener("keyup", function(e) {
     paddleSpeed = 0;
 });
+
+showButton.onclick = function() {
+    manual.classList.add("show");
+};
+closeButton.onclick = function() {
+    manual.classList.remove("show");
+};
 
 reset();
 animate(); 
