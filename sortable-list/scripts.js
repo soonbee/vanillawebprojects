@@ -26,6 +26,30 @@ cardList.innerHTML = arrayShuffle(names).map((name, idx) => {
 </div>`
 }).join("");
 
+document.querySelectorAll(".draggable-content").forEach(el => {
+    el.ondragstart = function() {
+        buf = el;
+    }
+});
+document.querySelectorAll(".draggable-content").forEach(el => {
+    el.ondragover = function(event) {
+        event.preventDefault();
+    }
+});
+document.querySelectorAll(".draggable-content").forEach(el => {
+    el.ondrop = function() {
+        const firstEl = buf.querySelector(".name");
+        const secondEl = el.querySelector(".name");
+
+        firstEl.className = "name";
+        secondEl.className = "name";
+
+        let tmp = firstEl.textContent;
+        firstEl.textContent = secondEl.textContent;
+        secondEl.textContent = tmp;
+    }
+});
+
 checkButton.onclick = function() {
     cardList.childNodes.forEach((child, idx) => {
         const nameEl = child.querySelector(".name");
