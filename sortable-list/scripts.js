@@ -1,20 +1,21 @@
 const cardList = document.querySelector(".card-list");
+const checkButton = document.querySelector("#check-button");
 
 const names = [
-    "Larry Ellison",
-    "Amancio Ortega",
-    "Carlos Slim Helu",
-    "Larry Page",
-    "Warren Buffett",
-    "Michael Bloomberg",
-    "Bernard Arnault",
-    "Bill Gates",
-    "Mark Zuckerberg",
     "Jeff Bezos",
+    "Bill Gates",
+    "Warren Buffett",
+    "Bernard Arnault",
+    "Carlos Slim Helu",
+    "Amancio Ortega",
+    "Larry Ellison",
+    "Mark Zuckerberg",
+    "Michael Bloomberg",
+    "Larry Page",
 ];
-let currentSequence = arrayShuffle(names);
+let buf;
 
-cardList.innerHTML = currentSequence.map((name, idx) => {
+cardList.innerHTML = arrayShuffle(names).map((name, idx) => {
     return `\
 <div class="card">
   <div class="number">${idx + 1}</div>
@@ -24,3 +25,14 @@ cardList.innerHTML = currentSequence.map((name, idx) => {
   </div>
 </div>`
 }).join("");
+
+checkButton.onclick = function() {
+    cardList.childNodes.forEach((child, idx) => {
+        const nameEl = child.querySelector(".name");
+        if (nameEl.textContent === names[idx]) {
+            nameEl.className = "name green";
+        } else {
+            nameEl.className = "name red";
+        };
+    });
+};

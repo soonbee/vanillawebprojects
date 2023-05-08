@@ -31,6 +31,12 @@ body {
     align-items: center;
     justify-content: center;
 }
+.name.green {
+    color: #3ae374;
+}
+.name.red {
+    color: #ff3838;
+}
 .draggable-content {
     cursor: pointer;
     display: flex;
