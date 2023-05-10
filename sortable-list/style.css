@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+:root {
+    font-family: Lato, sans-serif;
+}
+button {
+    cursor: pointer;
+}
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.card {
+    width: 260px;
+    height: 60px;
+    display: flex;
+    border: 1px solid #e3e6e5;
+    background-color: white;
+}
+.number {
+    background-color: #c3c7c9;
+    color: #33454f;
+    font-size: 28px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.name.green {
+    color: #3ae374;
+}
+.name.red {
+    color: #ff3838;
+}
+.draggable-content {
+    cursor: pointer;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    box-sizing: border-box;
+}
+#check-button {
+    background-color: #c3c7c9;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    padding: 10px 20px;
+}
